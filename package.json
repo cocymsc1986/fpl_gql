@@ -1,0 +1,41 @@
+{
+  "name": "fpl-gql-server",
+  "version": "0.0.1",
+  "description": "FPL GQL server",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "nodemon start.js",
+    "dev": "nodemon start.js --inspect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/cocymsc1986/fpl_gql.git"
+  },
+  "author": "Michael Cockcroft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cocymsc1986/fpl_gql/issues"
+  },
+  "homepage": "https://github.com/cocymsc1986/fpl_gql#readme",
+  "dependencies": {
+    "apollo-server": "^2.0.0",
+    "apollo-server-koa": "^2.0.0",
+    "axios": "^0.18.0",
+    "graphql": "^0.13.2",
+    "koa": "^2.5.2",
+    "koa-body-parser": "^1.1.2",
+    "koa-graphql": "^0.7.5",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.18.3"
+  }
+}
