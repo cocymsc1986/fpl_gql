@@ -1,6 +1,7 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 import graphqlHTTP from 'koa-graphql';
+import cors from 'koa-cors';
 
 import Schema from './schemas';
 import Resolvers from './resolvers'
@@ -14,6 +15,7 @@ router.all('/gql', graphqlHTTP({
   graphiql: true
 }));
 
+app.use(cors())
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(4000);

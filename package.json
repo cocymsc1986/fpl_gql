@@ -22,9 +22,11 @@
     "apollo-server": "^2.0.0",
     "apollo-server-koa": "^2.0.0",
     "axios": "^0.18.0",
+    "cors": "^2.8.4",
     "graphql": "^0.13.2",
     "koa": "^2.5.2",
     "koa-body-parser": "^1.1.2",
+    "koa-cors": "0.0.16",
     "koa-graphql": "^0.7.5",
     "koa-router": "^7.4.0"
   },
