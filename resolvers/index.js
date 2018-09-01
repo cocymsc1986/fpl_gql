@@ -12,6 +12,88 @@ const root = {
 		}
 	},
 
+	playersByTeam: async ({ team }) => {
+		try {
+			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
+			const players = data.filter(player => player.team_code === team);
+			return { players };
+		} catch (err) {
+			console.error('Error getting player data: ', err)
+		}
+	},
+
+	playerWithHighestProp: async ({ prop }) => {
+		try {
+			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
+			const player = data.reduce((a, b) => {
+				if (typeof a[prop] !== Number) {
+					return parseFloat(a[prop]) > parseFloat(b[prop]) ? a : b;
+				}
+				return a[prop] > b[prop] ? a : b;
+			});
+
+			return { player };
+		} catch (err) {
+			console.error('Error getting player data: ', err)
+		}
+	},
+
+	playerWithLowestProp: async ({ prop }) => {
+		try {
+			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
+			const player = data.reduce((a, b) => a[prop] < b[prop] ? a : b);
+
+			return { player };
+		} catch (err) {
+			console.error('Error getting player data: ', err)
+		}
+	},
+
+	playersByProp: async ({ prop, amount, reverseOrder = false }) => {
+		try {
+			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
+			const players = 
+				data.sort((a, b) => reverseOrder ? a[prop] - b[prop] : b[prop] - a[prop]).slice(0, amount);
+			return { players };
+		} catch (err) {
+			console.error('Error getting player data: ', err)
+		}
+	},
+
+	playersSearch: async ({ term, amount = 8 }) => {
+		try {
+			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
+			const players = 
+				data.filter(({ first_name, second_name }) => {
+					const fullName = `${first_name} ${second_name}`;
+					return fullName.toLowerCase().includes(term.toLowerCase());
+				}).slice(0, amount);
+			return { players };
+		} catch (err) {
+			console.error('Error getting player data: ', err)
+		}
+	},
+
+	playersByPropAndPos: async ({ prop, position, amount, reverseOrder = false }) => {
+		try {
+			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
+			const positionMap = {
+				goalkeeper: 1,
+				defender: 2,
+				midfielder: 3,
+				forward: 4
+			}
+			
+			const players = data
+				.filter(player => player.element_type === positionMap[position])
+				.sort((a, b) => reverseOrder ? a[prop] - b[prop] : b[prop] - a[prop]).slice(0, amount);
+
+			return { players };
+		} catch (err) {
+			console.error('Error getting player data: ', err)
+		}
+	},
+
 	team: async ({ id }) => {
 		try {
 			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/teams`);

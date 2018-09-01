@@ -3,10 +3,16 @@ import { buildSchema } from 'graphql';
 const schema = buildSchema(`
   type Query {
 		player(id: Int): Player
+		playersByTeam(team: Int): PlayersByTeam
+		playerWithHighestProp(prop: String): PlayerWithHighestProp
+		playerWithLowestProp(prop: String): PlayerWithLowestProp
+		playersByProp(prop: String, amount: Int, reverseOrder: Boolean): PlayersByProp
+		playersByPropAndPos(prop: String, position: String, amount: Int, reverseOrder: Boolean): PlayersByPropAndPos
 		team(id: Int): Team
 		currentFixtures: CurrentFixtures
 		nextFixtures: NextFixtures
 		fixtures(id: Int): Fixtures
+		playersSearch(term: String, amount: Int): PlayersSearch
 	}
 	
 	type Player {
@@ -25,6 +31,27 @@ const schema = buildSchema(`
 		transfers_in_event: Int!
 		transfers_out_event: Int!
 		news: String!
+		element_type: Int!
+		status: String
+		squad_number: Int
+		chance_of_playing_this_round: Int
+		chance_of_playing_next_round: Int
+		points_per_game: String
+		goals_scored: Int
+		assists: Int
+		clean_sheets: Int
+		goals_conceded: Int
+		own_goals: Int
+		penalties_saved: Int
+		penalties_missed: Int
+		yellow_cards: Int
+		red_cards: Int
+		saves: Int
+		bonus: Int
+		influence: String
+		creativity: String
+		threat: String
+		code: Int
 	}
 
 	type Team {
@@ -65,7 +92,29 @@ const schema = buildSchema(`
 		team_h: Int!
 	}
 
+	type PlayerWithHighestProp {
+		player: Player
+	}
 
+	type PlayerWithLowestProp {
+		player: Player
+	}
+
+	type PlayersByTeam {
+		players: [Player]
+	}
+
+	type PlayersByProp {
+		players: [Player]
+	}
+
+	type PlayersByPropAndPos {
+		players: [Player]
+	}
+
+	type PlayersSearch {
+		players: [Player]
+	}
 `);
 
 export default schema;
