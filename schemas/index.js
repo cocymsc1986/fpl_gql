@@ -8,9 +8,8 @@ const schema = buildSchema(`
 		playerWithLowestProp(prop: String): PlayerWithLowestProp
 		playersByProp(prop: String, amount: Int, reverseOrder: Boolean): PlayersByProp
 		playersByPropAndPos(prop: String, position: String, amount: Int, reverseOrder: Boolean): PlayersByPropAndPos
+		allTeams: AllTeams
 		team(id: Int): Team
-		currentFixtures: CurrentFixtures
-		nextFixtures: NextFixtures
 		fixtures(id: Int): Fixtures
 		playersSearch(term: String, amount: Int): PlayersSearch
 	}
@@ -54,6 +53,10 @@ const schema = buildSchema(`
 		code: Int
 	}
 
+	type AllTeams {
+		teams: [Team]
+	}
+
 	type Team {
 		id: Int!
 		name: String!
@@ -71,14 +74,7 @@ const schema = buildSchema(`
 
 	type Fixtures {
 		fixtures: [Fixture]
-	}
-
-	type CurrentFixtures {
-		fixtures: [Fixture]!
-	}
-
-	type NextFixtures {
-		fixtures: [Fixture]!
+		id: Int
 	}
 
 	type Fixture {
