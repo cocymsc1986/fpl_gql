@@ -97,52 +97,34 @@ const root = {
 	team: async ({ id }) => {
 		try {
 			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/teams`);
-			const team = data.filter(el => el.code == id)[0];
+			const team = data.filter(el => el.id == id)[0];
 
 			return team;
 		} catch (err) {
-			console.error('Error getting player data: ', err)
+			console.error('Error getting team data: ', err)
 		}
 	},
 
-	fixtures: async ({ id }) => {
+	allTeams: async () => {
+		try {
+			const { data: teams } = await axios.get(`https://fantasy.premierleague.com/drf/teams`);
+			
+			return { teams };
+		} catch (err) {
+			console.error('Error getting team data: ', err)
+		}
+	},
+
+	fixtures: async ({ id = null }) => {
 		try {
 			const { data: gameweekData } = await axios.get(`https://fantasy.premierleague.com/drf/events`);
-			const gameweek = gameweekData.filter(gw => gw.id == id)[0];
+			const gameweek = gameweekData.filter(gw => !id ? gw.is_current === true : gw.id == id)[0] ;
 
-			const { data: fixtureData } = await  axios.get(`https://fantasy.premierleague.com/drf/fixtures`);
+			const { data: fixtureData } = await axios.get(`https://fantasy.premierleague.com/drf/fixtures`);
 			const fixtures = fixtureData.filter(week => week.deadline_time === gameweek.deadline_time)
-
-			return { fixtures };
+			return { fixtures, id: gameweek.id };
 		} catch (err) {
-			console.error('Error getting player data: ', err)
-		}
-	},
-
-	currentFixtures: async () => {
-		try {
-			const { data: gameweekData } = await axios.get(`https://fantasy.premierleague.com/drf/events`);
-			const gameweek = gameweekData.filter(gw => gw.is_current === true)[0];
-
-			const { data: fixtureData } = await  axios.get(`https://fantasy.premierleague.com/drf/fixtures`);
-			const fixtures = fixtureData.filter(week => week.deadline_time === gameweek.deadline_time)
-			return { fixtures };
-		} catch (err) {
-			console.error('Error getting player data: ', err)
-		}
-	},
-
-	nextFixtures: async () => {
-		try {
-			const { data: gameweekData } = await axios.get(`https://fantasy.premierleague.com/drf/events`);
-			const gameweek = gameweekData.filter(gw => gw.is_next === true)[0];
-
-			const { data: fixtureData } = await  axios.get(`https://fantasy.premierleague.com/drf/fixtures`);
-			const fixtures = fixtureData.filter(week => week.deadline_time === gameweek.deadline_time);
-
-			return { fixtures };
-		} catch (err) {
-			console.error('Error getting player data: ', err)
+			console.error('Error getting fixture data: ', err)
 		}
 	}
 };
