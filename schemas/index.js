@@ -59,6 +59,7 @@ const schema = buildSchema(`
 
 	type Team {
 		id: Int!
+		code: Int!
 		name: String!
 		short_name: String!
 		current_event_fixture: [TeamFixture]
