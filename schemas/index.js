@@ -11,6 +11,7 @@ const schema = buildSchema(`
 		allTeams: AllTeams
 		team(id: Int): Team
 		fixtures(id: Int): Fixtures
+		getTeamsFixtures(id: Int, amount: Int): GetTeamsFixtures
 		playersSearch(term: String, amount: Int): PlayersSearch
 	}
 	
@@ -71,6 +72,11 @@ const schema = buildSchema(`
 		opponent: Int!
 		month: Int!
 		day: Int!
+	}
+
+	type GetTeamsFixtures {
+		fixtures: [Fixture]
+		id: Int
 	}
 
 	type Fixtures {

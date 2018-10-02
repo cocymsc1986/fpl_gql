@@ -126,6 +126,16 @@ const root = {
 		} catch (err) {
 			console.error('Error getting fixture data: ', err)
 		}
+	},
+
+	getTeamsFixtures: async ({ id, amount }) => {
+		try {
+			const { data: fixtureData } = await axios.get(`https://fantasy.premierleague.com/drf/fixtures`);
+			const fixtures = fixtureData.filter(week => week.started === false && (week.team_a === id || week.team_h === id)).slice(0, amount);
+			return { fixtures, id };
+		} catch (err) {
+			console.error('Error getting teams fixtures: ', err)
+		}
 	}
 };
 
