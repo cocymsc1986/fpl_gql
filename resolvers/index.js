@@ -136,6 +136,20 @@ const root = {
 		} catch (err) {
 			console.error('Error getting teams fixtures: ', err)
 		}
+	},
+
+	getAllTeamsFixtures: async () => {
+		try {
+			const { data: fixtureData } = await axios.get(`https://fantasy.premierleague.com/drf/fixtures`);
+			const fixtures = fixtureData.filter(week => week.started === false);
+
+			const { data: teams } = await axios.get(`https://fantasy.premierleague.com/drf/teams`);
+			const teamSortedFixtures = teams.map(team => fixtures.filter(fixture => fixture.team_h === team.id || fixture.team_a === team.id));
+
+			return { fixtures: teamSortedFixtures };
+		} catch (err) {
+			console.error('Error getting teams fixtures: ', err)
+		}
 	}
 };
 
