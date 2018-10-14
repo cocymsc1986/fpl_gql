@@ -12,6 +12,7 @@ const schema = buildSchema(`
 		team(id: Int): Team
 		fixtures(id: Int): Fixtures
 		getTeamsFixtures(id: Int, amount: Int): GetTeamsFixtures
+		getAllTeamsFixtures: GetAllTeamsFixtures
 		playersSearch(term: String, amount: Int): PlayersSearch
 	}
 	
@@ -79,6 +80,10 @@ const schema = buildSchema(`
 		id: Int
 	}
 
+	type GetAllTeamsFixtures {
+		fixtures: [[Fixture]]
+	}
+
 	type Fixtures {
 		fixtures: [Fixture]
 		id: Int
@@ -93,6 +98,8 @@ const schema = buildSchema(`
 		finished: Boolean!
 		team_a: Int!
 		team_h: Int!
+		team_h_difficulty: Int
+		team_a_difficulty: Int
 	}
 
 	type PlayerWithHighestProp {
