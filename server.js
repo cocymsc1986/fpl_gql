@@ -19,4 +19,4 @@ app.use(cors())
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(4000);
-console.log('Running a FPL GQL API server at localhost:4000/gql');
+console.log('Running a FPL GQL API server at port 4000/gql');
