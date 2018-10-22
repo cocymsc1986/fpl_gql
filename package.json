@@ -28,9 +28,7 @@
     "koa-body-parser": "^1.1.2",
     "koa-cors": "0.0.16",
     "koa-graphql": "^0.7.5",
-    "koa-router": "^7.4.0"
-  },
-  "devDependencies": {
+    "koa-router": "^7.4.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
