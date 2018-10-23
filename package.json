@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test",
-    "qgl_prod": "nodemon start.js",
+    "prod": "nodemon start.js",
     "dev": "nodemon start.js --inspect",
     "build": "babel ./** --out-file ./dist/app.js"
   },
