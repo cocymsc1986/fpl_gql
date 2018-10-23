@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test",
-    "start": "nodemon start.js",
-    "dev": "nodemon start.js --inspect"
+    "qgl_prod": "nodemon start.js",
+    "dev": "nodemon start.js --inspect",
+    "build": "babel ./** --out-file ./dist/app.js"
   },
   "repository": {
     "type": "git",
