@@ -53,6 +53,7 @@ const schema = buildSchema(`
 		creativity: String
 		threat: String
 		code: Int
+		team_code: Int
 	}
 
 	type AllTeams {
