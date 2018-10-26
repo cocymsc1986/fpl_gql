@@ -23,7 +23,7 @@ const schema = buildSchema(`
 		web_name: String!
 		total_points: Int!,
 		event_points: Int!,
-		team_code: Int!
+		team: Int!
 		now_cost: Int!
 		value_form: String!
 		in_dreamteam: Boolean!
