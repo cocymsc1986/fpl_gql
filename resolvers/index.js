@@ -15,7 +15,7 @@ const root = {
 	playersByTeam: async ({ team }) => {
 		try {
 			const { data } = await axios.get(`https://fantasy.premierleague.com/drf/elements`);
-			const players = data.filter(player => player.team_code === team);
+			const players = data.filter(player => player.team === team);
 			return { players };
 		} catch (err) {
 			console.error('Error getting player data: ', err)
