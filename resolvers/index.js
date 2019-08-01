@@ -159,25 +159,15 @@ const root = {
     }
   },
 
-  fixtures: async ({ id = null }) => {
+  fixtures: async ({ id }) => {
     try {
-      const {
-        data: { events: gameweekData }
-      } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+      const gw = id ? id : 1;
+
+      const { data: fixtures } = await axios.get(
+        `https://fantasy.premierleague.com/api/fixtures?event=${gw}`
       );
 
-      let gameweek = gameweekData.find(gw =>
-        !id ? gw.is_current || gw.is_next : gw.id == id
-      );
-
-      const { data: fixtureData } = await axios.get(
-        "https://fantasy.premierleague.com/api/fixtures"
-      );
-
-      const fixtures = fixtureData.filter(week => week.event === gameweek.id);
-
-      return { fixtures, id: gameweek.id };
+      return { fixtures, id: gw };
     } catch (err) {
       console.error("Error getting fixture data: ", err);
     }
