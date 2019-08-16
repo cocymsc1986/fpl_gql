@@ -6,7 +6,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const player = elements.filter(el => el.id == id)[0];
 
@@ -21,7 +21,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const players = elements.filter(player => player.team === team);
       return { players };
@@ -35,7 +35,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const player = elements.reduce((a, b) => {
         if (typeof a[prop] !== Number) {
@@ -55,7 +55,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const player = elements.reduce((a, b) => (a[prop] < b[prop] ? a : b));
 
@@ -70,7 +70,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const players = elements
         .sort((a, b) => (reverseOrder ? a[prop] - b[prop] : b[prop] - a[prop]))
@@ -86,7 +86,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const players = elements
         .filter(({ first_name, second_name }) => {
@@ -110,7 +110,7 @@ const root = {
       const {
         data: { elements }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const positionMap = {
         goalkeeper: 1,
@@ -135,7 +135,7 @@ const root = {
       const {
         data: { teams }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const team = teams.filter(el => el.id == id)[0];
 
@@ -150,7 +150,7 @@ const root = {
       const {
         data: { teams }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
 
       return { teams };
@@ -200,7 +200,7 @@ const root = {
       const {
         data: { teams }
       } = await axios.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static"
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
       const teamSortedFixtures = teams.map(team =>
         fixtures.filter(
