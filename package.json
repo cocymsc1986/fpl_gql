@@ -21,7 +21,7 @@
   "homepage": "https://github.com/cocymsc1986/fpl_gql#readme",
   "dependencies": {
     "apollo-server": "^2.0.0",
-    "apollo-server-koa": "^2.0.0",
+    "apollo-server-koa": "^2.14.2",
     "axios": "^0.18.0",
     "cors": "^2.8.4",
     "graphql": "^0.13.2",
