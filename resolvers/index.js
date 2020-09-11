@@ -83,7 +83,9 @@ const root = {
 
   playersSearch: async ({ term, amount = 8 }) => {
     try {
-      const { data } = await request.post(
+      const {
+        data: { elements },
+      } = await request.get(
         "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
 
@@ -109,16 +111,8 @@ const root = {
       const {
         data: { elements },
       } = await request.get(
-        "https://fantasy.premierleague.com/api/bootstrap-static/",
-        {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
-          },
-        }
+        "https://fantasy.premierleague.com/api/bootstrap-static/"
       );
-
-      console.log("****** ", elements);
 
       const positionMap = {
         goalkeeper: 1,
