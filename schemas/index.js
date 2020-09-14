@@ -1,4 +1,4 @@
-import { buildSchema } from 'graphql';
+import { buildSchema } from "graphql";
 
 const schema = buildSchema(`
   type Query {
@@ -14,6 +14,19 @@ const schema = buildSchema(`
 		getTeamsFixtures(id: Int, amount: Int): GetTeamsFixtures
 		getAllTeamsFixtures: GetAllTeamsFixtures
 		playersSearch(term: String, amount: Int): PlayersSearch
+		eventStatus: EventStatus
+	}
+
+	type EventStatus {
+		status: [GameweekStatus]
+		leagues: String!
+	}
+
+	type GameweekStatus {
+		bonus_added: Boolean!
+		date: String!
+		event: Int!
+		points: String!
 	}
 	
 	type Player {

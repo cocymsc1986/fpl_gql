@@ -1,6 +1,18 @@
 import { request } from "../utils/request-helper";
 
 const root = {
+  eventStatus: async () => {
+    try {
+      const { data } = await request.get(
+        "https://fantasy.premierleague.com/api/event-status/"
+      );
+
+      return data;
+    } catch (err) {
+      console.error("Error getting event status: ", err);
+    }
+  },
+
   player: async ({ id }) => {
     try {
       const {
