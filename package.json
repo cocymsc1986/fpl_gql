@@ -22,7 +22,7 @@
   "dependencies": {
     "apollo-server": "^2.0.0",
     "apollo-server-koa": "^2.0.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
