@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/cocymsc1986/fpl_gql#readme",
   "dependencies": {
-    "apollo-server": "^2.0.0",
+    "apollo-server": "^2.25.3",
     "apollo-server-koa": "^2.0.0",
     "axios": "^0.20.0",
     "babel-core": "^6.26.3",
